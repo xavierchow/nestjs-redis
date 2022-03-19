@@ -1,18 +1,8 @@
 import { Module } from '@nestjs/common';
-import { RedisModule } from '@liaoliaots/nestjs-redis';
+import { CommonModule } from './common/common.module';
 import { CatsModule } from './cats/cats.module';
 
 @Module({
-    imports: [
-        RedisModule.forRoot({
-            readyLog: true,
-            config: {
-                host: 'localhost',
-                port: 6380,
-                password: 'bitnami'
-            }
-        }),
-        CatsModule
-    ]
+    imports: [CommonModule, CatsModule]
 })
 export class AppModule {}
